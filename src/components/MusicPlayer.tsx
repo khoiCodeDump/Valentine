@@ -55,6 +55,23 @@ export default function MusicPlayer({ src, label, musicEnabled, onToggle }: Musi
     }
   }, [musicEnabled]);
 
+  // Retry playing on first user interaction (browser autoplay policy)
+  useEffect(() => {
+    const tryPlay = () => {
+      if (audioRef.current && musicEnabledRef.current) {
+        audioRef.current.play().catch(() => {});
+      }
+    };
+
+    document.addEventListener("click", tryPlay, { once: false });
+    document.addEventListener("touchstart", tryPlay, { once: false });
+
+    return () => {
+      document.removeEventListener("click", tryPlay);
+      document.removeEventListener("touchstart", tryPlay);
+    };
+  }, []);
+
   return (
     <motion.button
       onClick={onToggle}

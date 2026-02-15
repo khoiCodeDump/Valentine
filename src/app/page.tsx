@@ -92,7 +92,7 @@ export default function Home() {
   const [showHeart, setShowHeart] = useState(false);
   const dropIdRef = useRef(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [musicEnabled, setMusicEnabled] = useState(true);
+  const [musicEnabled, setMusicEnabled] = useState(false);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -244,7 +244,7 @@ export default function Home() {
                 Every flower here blooms because of your love...
               </p>
               <motion.button
-                onClick={() => setScene("garden")}
+                onClick={() => { setScene("garden"); setMusicEnabled(true); }}
                 className="bg-white/90 text-pink-600 rounded-full text-2xl md:text-3xl shadow-xl hover:bg-white hover:shadow-2xl transition-all font-semibold"
                 style={{ fontFamily: "'Lora', serif", padding: "14px 36px" }}
                 whileHover={{ scale: 1.05, y: -2 }}
