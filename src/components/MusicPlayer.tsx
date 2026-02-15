@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface MusicPlayerProps {
@@ -12,12 +12,17 @@ interface MusicPlayerProps {
 
 export default function MusicPlayer({ src, label, musicEnabled, onToggle }: MusicPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const prevSrcRef = useRef<string>("");
+  const musicEnabledRef = useRef(musicEnabled);
+
+  // Keep ref in sync
+  useEffect(() => {
+    musicEnabledRef.current = musicEnabled;
+  }, [musicEnabled]);
 
   // Create or update audio element when src changes
   useEffect(() => {
-    // If src changed, stop old audio
-    if (audioRef.current && prevSrcRef.current !== src) {
+    // Stop old audio
+    if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.src = "";
       audioRef.current = null;
@@ -28,10 +33,9 @@ export default function MusicPlayer({ src, label, musicEnabled, onToggle }: Musi
     audio.volume = 0.4;
     audio.preload = "auto";
     audioRef.current = audio;
-    prevSrcRef.current = src;
 
     // If music was enabled, auto-play the new track
-    if (musicEnabled) {
+    if (musicEnabledRef.current) {
       audio.play().catch(() => {});
     }
 
@@ -39,7 +43,7 @@ export default function MusicPlayer({ src, label, musicEnabled, onToggle }: Musi
       audio.pause();
       audio.src = "";
     };
-  }, [src]); // Only react to src changes
+  }, [src]);
 
   // Handle play/pause when musicEnabled changes
   useEffect(() => {
