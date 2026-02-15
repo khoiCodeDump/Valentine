@@ -92,7 +92,7 @@ export default function Home() {
   const [showHeart, setShowHeart] = useState(false);
   const dropIdRef = useRef(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [musicEnabled, setMusicEnabled] = useState(false);
+  const [musicEnabled, setMusicEnabled] = useState(true);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
