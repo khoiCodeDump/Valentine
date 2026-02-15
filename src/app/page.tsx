@@ -191,13 +191,15 @@ export default function Home() {
 
   return (
     <div className="w-screen h-screen overflow-hidden relative">
-      {/* Music Player */}
-      <MusicPlayer
-        src={scene === "intro" || scene === "garden" ? "/music/garden.mp3" : "/music/love.mp3"}
-        label="Music"
-        musicEnabled={musicEnabled}
-        onToggle={() => setMusicEnabled((prev) => !prev)}
-      />
+      {/* Music Player — only show after entering the garden */}
+      {scene !== "intro" && (
+        <MusicPlayer
+          src={scene === "garden" ? "/music/garden.mp3" : "/music/love.mp3"}
+          label="Music"
+          musicEnabled={musicEnabled}
+          onToggle={() => setMusicEnabled((prev) => !prev)}
+        />
+      )}
 
       <AnimatePresence mode="wait">
         {/* ========== INTRO SCENE ========== */}
