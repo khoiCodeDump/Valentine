@@ -815,9 +815,9 @@ export default function Home() {
                               className="text-lg md:text-xl text-amber-800 mb-10 leading-loose max-w-2xl mx-auto"
                               style={{ fontFamily: "'Lora', serif" }}
                             >
-                              Each flower in this garden grew from a seed of our love.
-                              You water my heart every single day with your kindness,
-                              your warmth, and just being you.
+                              Each flower represents your action for each love language.
+                              You shower each love language with your kindness, warmth,
+                              and just being you. I love you baby
                             </p>
                           </motion.div>
 
@@ -869,6 +869,22 @@ export default function Home() {
                             >
                               No
                             </motion.button>
+                          </motion.div>
+
+                          {/* Close button */}
+                          <motion.div
+                            style={{ marginTop: "20px" }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 2 }}
+                          >
+                            <button
+                              onClick={() => { setLetterOpen(false); setScene("table"); }}
+                              className="text-amber-700 hover:text-amber-900 transition-colors cursor-pointer font-semibold"
+                              style={{ padding: "8px 24px", fontSize: "15px", fontFamily: "'Lora', serif" }}
+                            >
+                              ✕ Close Letter
+                            </button>
                           </motion.div>
                         </div>
                       ) : (
