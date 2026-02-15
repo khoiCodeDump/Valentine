@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --color-soil: #5c3d2e;
+  --color-soil-dark: #3e2a1f;
+  --color-grass: #4a7c59;
+  --color-grass-light: #6db57e;
+  --color-sky-top: #87CEEB;
+  --color-sky-bottom: #E0F7FA;
+  --color-water: #4fc3f7;
+  --color-parchment: #f5e6c8;
+  --color-parchment-dark: #d4c4a8;
+  --color-table: #8B6914;
+  --color-table-dark: #6b4f10;
+  --color-jar: rgba(200, 230, 255, 0.4);
+  --color-jar-border: rgba(150, 200, 240, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes swayGentle {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes waterDrop {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(40px) scale(0.5); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 200, 100, 0.3)); }
+  50% { filter: drop-shadow(0 0 12px rgba(255, 200, 100, 0.7)); }
+}
+
+.watering-can-cursor {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🚿%3C/text%3E%3C/svg%3E") 16 16, pointer;
+}
